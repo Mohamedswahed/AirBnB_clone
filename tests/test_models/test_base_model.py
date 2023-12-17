@@ -78,6 +78,14 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(inst.name, "Holberton")
         self.assertEqual(inst.number, 89)
 
+    def test_pep8_conformance(self):
+        """Test that models/base_model.py conforms to PEP8."""
+        for path in ['models/base_model.py',
+                     'tests/test_models/test_base_model.py']:
+            with self.subTest(path=path):
+                errors = pycodestyle.Checker(path).check_all()
+                self.assertEqual(errors, 0)
+
     def test_datetime_attributes(self):
         """Test that two BaseModel instances have different datetime objects
         and that upon creation have identical updated_at and created_at
